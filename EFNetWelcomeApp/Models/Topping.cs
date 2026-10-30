@@ -11,6 +11,6 @@ namespace EFNetWelcomeApp.Models
         public int Id { get; set; }
         public string Title { get; set; } = null!;
 
-        public List<Dish>? Dishes { get; set; }
+        public List<Dish>? Dishes { get; set; } = new();
     }
 }
