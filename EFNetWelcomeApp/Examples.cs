@@ -28,7 +28,7 @@ namespace EFNetWelcomeApp
                 new() { Title = "Sour Cream" },
                 new() { Title = "Celery" }
             };
-            context.Toppings.AddRange(toppings);
+            //context.Toppings.AddRange(toppings);
 
             Dish olivier = new()
             {

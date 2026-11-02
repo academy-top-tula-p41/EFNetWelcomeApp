@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EFNetWelcomeApp.Models.ModelsConfigurations;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,23 @@ namespace EFNetWelcomeApp.Models
             string? connectionString = config.GetConnectionString("DefaultConnection");
 
             optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            // FluentAPI
+
+            //modelBuilder.Ignore<Topping>();
+
+            modelBuilder.ApplyConfiguration(new ToppingConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new DishConfiguration());
+
+            //modelBuilder.Entity<Dish>()
+            //            .HasOne(d => d.Category)
+            //            .WithMany(c => c.Dishes)
+            //            .HasForeignKey(d => d.CategoryId);
         }
     }
 }
